@@ -9,23 +9,13 @@ function App() {
   const [docsData, setDocsData] = useState<DocsData | null>(null);
   const [selectedPage, setSelectedPage] = useState(0);
 
-  /* ***** Note:Not required since api call is fetching on submit button not on loading component ***
-   useEffect(() => {
-    
-     if (docsUrl) {
-     fetchData();
-     }
-   }, [docsUrl]);
-  *******   */
-
   const fetchData = async () => {
     try {
       const response = await fetch(docsUrl);
       const data = await response?.json?.();
-      console.log(data.Pages);
       setDocsData(data);
     } catch (error) {
-      // Handle error here
+      console.error(error);
     }
   };
 
